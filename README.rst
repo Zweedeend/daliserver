@@ -191,24 +191,30 @@ If you didn't specify any options, it listens on TCP 127.0.0.1:55825
 
 Requests have the following format:
 
+```
   version:uint8_t (protocol version)
   type:uint8_t (request type)
   address:uint8_t (device address)
   command:uint8_t (device command)
+```
 
 Responses are defined as:
 
+```
   version:uint8_t (protocol version)
   status:uint8_t (status code)
   response:uint8_t (response value)
   padding:uint8_t (must be 0)
+```
 
 Received out of band messages:
 
+```
   version:uint8_t (protocol version)
   status:uint8_t (status code)
   address:uint8_t (device address)
   command:uint8_t (device command)
+```
 
 The protocol version is currently 2. All frames are 4 bytes long.
 
@@ -216,10 +222,12 @@ type must be 0, denoting a "Send DALI command" request.
 
 status can have one of the following values:
 
+```
   0:   Transfer successful, no response
   1:   Transfer successful, response received
   2:   Broadcast message received
   255: Transfer error
+```
 
 address and command are the DALI device address and command, respectively.
 
